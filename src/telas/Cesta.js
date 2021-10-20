@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import Topo from './topo.jpg';
+import Topo from '../../assets/capa.jpg';
 import Texto from '../components/Texto';
 
 export default function Cesta() {

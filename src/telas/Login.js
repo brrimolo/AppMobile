@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 import Capa from '../../assets/capa.jpg';
 import Texto from '../components/Texto';
 import InputBox from '../components/InputBox';
+import Botao from '../components/Botao';
 
 
 export default function Login() {
@@ -37,7 +38,9 @@ export default function Login() {
         <InputBox>Login</InputBox>
         <Texto>Senha: </Texto>
         <InputBox>Senha</InputBox>
+        <Botao/>
       </View>
+        
     </SafeAreaView>
     </>
   )
