@@ -30,29 +30,29 @@ export default function Menu() {
         <Drawer.Screen 
           name='Login'
           component={ Login }
-          options={ {
+          options={{
             title: 'Home',
             drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Login</Text>),
             drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="login" />)
-          } }
+          }}
         />
 
         <Drawer.Screen
           name='Cesta'
           component={ Cesta }
-          options={ {
+          options={{
             drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Cesta</Text>),
             drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="shopping-cart" />),
-          } } 
+          }} 
         />
 
         <Drawer.Screen
           name='Gerenciar Clientes'
           component={ GerenciarClientes }
-          options={ {
+          options={{
             drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Gerenciar Clientes</Text>),
             drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="groups" />),
-          } } 
+          }}
         />
 
       </Drawer.Navigator>

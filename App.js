@@ -1,21 +1,24 @@
 import React from 'react';
 import { StyleSheet} from 'react-native';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 
-import Login from './src/telas/Login';
-import mock from './src/mocks/login'
 import Menu from './src/telas/Menu';
+
+window.servidor = 'http://localhost:8080';
 
 export default function App() {
   return (
-    <Menu/>
+    <SafeAreaView style={ estilos.container }>
+      <StatusBar/>
+      <Menu/>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    //backgroundColor: '#fff',
     //alignItems: 'center',
     //justifyContent: 'center',
   },

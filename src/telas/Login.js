@@ -32,13 +32,13 @@ export default function Login() {
           label='Senha'
           value={ password }
           onChangeText={ onChangePassword }
-          secureTextEntry={true}
+          secureTextEntry={ true }
         />
         <Texto>Login: </Texto>
         <InputBox>Login</InputBox>
         <Texto>Senha: </Texto>
         <InputBox>Senha</InputBox>
-        <Botao/>
+        <Botao texto='Logar' style={ estilos.botao } onPress={ () => {} } />
       </View>
         
     </SafeAreaView>
@@ -54,6 +54,9 @@ const estilos = StyleSheet.create({
     backgroundColor: "#ffffff",
     padding: 20,
     margin: 10,
+  },
+  botao: {
+    marginTop: 50,
   },
 
 });

@@ -1,32 +1,35 @@
 import React from 'react';
-import { Text, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function Botao(props) {
-  const { onPress, title='Logar' } = props;
+export default function Botao( props ) {
+  
+  const { texto, style, onPress } = props;
+
   return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
-    </Pressable>
+    <>
+    <TouchableOpacity style={[estilos.botao, style]} onPress={ onPress }>
+      <Text style={ estilos.textoBotao }>{ texto }</Text>
+    </TouchableOpacity>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
+const estilos = StyleSheet.create({
+  botao: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 6,
     elevation: 3,
     backgroundColor: 'purple',
-    marginTop: 50,
     height: 70,
   },
-  text: {
+  textoBotao: {
+    textAlign: 'center',
+    color: '#ffffff',
     fontSize: 20,
     lineHeight: 21,
     fontWeight: 'bold',
-    //letterSpacing: 0.25,
-    color: 'white',
   },
 });

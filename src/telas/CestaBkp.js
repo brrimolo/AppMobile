@@ -6,18 +6,24 @@ import Texto from '../components/Texto';
 
 export default function Cesta() {
 
-  return (
-    <>
+  return <>
     <Image source={Topo} style={styles.topo} />
     <Text style={styles.titulo}> App Mobile </Text>
 
     <View style={styles.cesta}>
       <Texto>Cesta de Verduras</Texto>
       <Text style={styles.nomeFazenda}>Jenny Jack Farm</Text>
+      <Text style={styles.descricao}>
+          Uma cesta com produtos selecionados
+          cuidadosamente da fazenda direto
+          para sua cozinha
+      </Text>
       <Text style={styles.preco}>40,00</Text>
     </View>
+    
+
+
     </>
-  )
 }
 
 const width = Dimensions.get('screen').width;
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
   topo: {
     width: '100%',
     //height: 578 / 768 * width,
-    height: '40%',
+    height: '80%',
   },
 
   titulo: {

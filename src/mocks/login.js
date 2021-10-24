@@ -2,8 +2,11 @@ const login = {
 
   centro: {
     titulo: 'Login:',
-    outro: 'Senha',
   },
+
+  rodape: {
+    texto: 'Senha',
+  }
 
 }
 
