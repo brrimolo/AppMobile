@@ -1,30 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import Texto from './Texto';
-
-export default function Item( { titulo, itens } ) {
-
-  const renderItem = ({ item: { nome, tel }}) => {
-    return(
-      <>
-      <View key={ nome }>
-        <Text>{ nome }</Text>
-        <Text>{ tel }</Text>
-      </View>
-      </>
-    )
-  }
-
+export default function Item({ item: { nome, tel }}) {
   return (
     <>
-      <Texto style={ estilos.titulo }> { titulo } </Texto>
-      <FlatList
-        data={ itens }
-        renderItem={ renderItem }
-        keyExtractor={ ({ nome }) => nome }
-        style={ estilos.lista, estilos.textoLista }
-      />
+      <ScrollView>
+        <View style={ estilos.lista }>
+          <Text style={ estilos.textoLista }>{ nome }</Text>
+          <Text style={ estilos.textoLista }>{ tel }</Text>
+        </View>
+      </ScrollView>
     </>
   );
 }
@@ -32,20 +17,16 @@ export default function Item( { titulo, itens } ) {
 const estilos = StyleSheet.create({
   lista: {
     margin: 10,
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    paddingVertical: 5,
+    paddingHorizontal: 16,
+    backgroundColor: '#ffffff',
   },
 
   textoLista: {
-    textAlign: 'center',
-    color: '#ffffff',
-    fontSize: 20,
+    textAlign: 'left',
+    fontSize: 16,
     lineHeight: 21,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
+    padding: 5,
   },
-
-  titulo: {
-    textAlign: 'center',
-  },
-
 });

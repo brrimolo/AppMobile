@@ -1,26 +1,29 @@
 import React from "react";
 import { TextInput } from 'react-native-paper';
 
-export default function Texto( { children } ) {
+export default function Texto( props ) {
   
-  const [text, setText] = React.useState('');
+  const [ text, setText ] = React.useState('');
+  const { onChangeText, value, style, label, keyboardType } = props;
 
   var visivel = false;
-  if ( children === 'Senha') {
+  if ( label.includes('Senha') || label.includes('senha')) {
     visivel = true;
   };
 
   return (
     <>
       <TextInput 
-        mode ={ estilo }
-        label={ children }
-        value={ text }
-        onChangeText={ text => setText(text) }
+        mode={ modo }
+        style={ style }
+        label= { label }
+        value={ value }
+        keyboardType={ keyboardType }        
+        onChangeText={ onChangeText }
         secureTextEntry= { visivel }
       />
     </>
   )
 }
 
-const estilo = 'flat';
+const modo = 'flat'; //'outlined'

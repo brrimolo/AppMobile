@@ -1,21 +1,36 @@
 import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {  } from 'react-native-gesture-handler';
 
+import Item from '../components/Item';
 import Topo from '../../assets/capa.jpg';
 import Texto from '../components/Texto';
+import lista from '../mocks/gerenciarClientes';
+
 
 export default function Cesta() {
 
   return (
     <>
-    <Image source={Topo} style={styles.topo} />
-    <Text style={styles.titulo}> App Mobile </Text>
-
-    <View style={styles.cesta}>
-      <Texto>Cesta de Verduras</Texto>
-      <Text style={styles.nomeFazenda}>Jenny Jack Farm</Text>
-      <Text style={styles.preco}>40,00</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+    <FlatList
+      data={ lista.container.itens }
+      renderItem={ Item }
+      keyExtractor={ ({ nome }) => nome }
+      ListHeaderComponent= { () => {
+        return(
+          <>
+            <Image source={Topo} style={styles.topo} />
+            <Text style={styles.titulo}> App Mobile </Text>
+            <View style={styles.cesta}>
+              <Texto>Cesta de Verduras</Texto>
+              <Text style={styles.nomeFazenda}>Jenny Jack Farm</Text>
+              <Text style={styles.preco}>40,00</Text>
+            </View>
+          </>
+        )}}
+    />
+    </SafeAreaView>
     </>
   )
 }
@@ -36,7 +51,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontSize: 26,
     lineHeight: 26,
-    color: 'red',
+    color: 'purple',
     fontWeight: 'bold',
     padding: 30
   },

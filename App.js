@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { AppRegistry, StyleSheet } from 'react-native';
 import { SafeAreaView, StatusBar } from 'react-native';
+import { expo as appName } from './app.json';
+import { StoreProvider, useStore } from './src/store';
+import Login from './src/telas/Login';
 
 import Menu from './src/telas/Menu';
 
@@ -23,3 +26,17 @@ const estilos = StyleSheet.create({
     //justifyContent: 'center',
   },
 });
+
+const Root = () => (
+  <StoreProvider>
+    <Menu />
+  </StoreProvider>
+);
+
+AppRegistry.registerComponent(appName.name, () => Root);
+
+const Router = () => {
+  const [ store ] = useStore()
+  return store.token ? <Menu /> : <Login />
+
+}

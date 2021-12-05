@@ -7,9 +7,9 @@ export default function Botao( props ) {
 
   return (
     <>
-    <TouchableOpacity style={[estilos.botao, style]} onPress={ onPress }>
-      <Text style={ estilos.textoBotao }>{ texto }</Text>
-    </TouchableOpacity>
+      <TouchableOpacity style={[estilos.botao, style]} onPress={ onPress }>
+        <Text style={ estilos.textoBotao }>{ texto }</Text>
+      </TouchableOpacity>
     </>
   );
 }
