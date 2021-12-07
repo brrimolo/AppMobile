@@ -2,7 +2,6 @@ import React from 'react';
 import { AppRegistry, StyleSheet } from 'react-native';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { expo as appName } from './app.json';
-import { StoreProvider, useStore } from './src/store';
 import Login from './src/telas/Login';
 
 import Menu from './src/telas/Menu';

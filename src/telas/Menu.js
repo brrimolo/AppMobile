@@ -6,8 +6,9 @@ import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Login from './Login';
 import GerenciarClientes from './GerenciarClientes';
-import GerenciarClientes2 from './GerenciarClientes2';
 import CadastroUsuario from './CadastroUsuario';
+import Cardapio from './Cardapio';
+import Cesta from './Cesta';
 
 const Drawer = createDrawerNavigator();
 
@@ -53,15 +54,26 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconClientes } />),
           }}
         />
+        <Drawer.Screen
+          name='Cardapio'
+          component={ Cardapio }
+          options={ {
+            drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Cardapio</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="fastfood" />),
+          } } 
+          
+        />
 
         <Drawer.Screen
-          name={ titulos.item4 }
-          component={ GerenciarClientes2 }
+          name='Cesta'
+          component={ Cesta }
           options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item4 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconClientes } />),
-          }}
+            drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Cesta</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="shopping-cart" />),
+          }} 
         />
+
+       
 
       </Drawer.Navigator>
     </NavigationContainer>
