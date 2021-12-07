@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Texto from '../components/Texto';
 import InputBox from '../components/InputBox';
 import Botao from '../components/Botao';
 
@@ -16,30 +15,27 @@ export default function Login() {
 
   return (
     <>
-        <View style={ estilos.container }>
-          <InputBox
-            label='E-mail'
-            value={ login }
-            style={ estilos.entrada }
-            keyboardType='email-address'
-            onChangeText={ onChangeLogin }
-          />
-          
-          
-          <InputBox
-            label='Senha'
-            value={ password }
-            style={ estilos.entrada }
-            keyboardType='visible-password'
-            onChangeText={ onChangePassword }
-          />
-
-          <Botao 
-            texto='Logar'
-            style={ estilos.botao }
-            onPress={ onChangePassword }
-          />
-        </View>
+      <View style={ estilos.container }>
+        <InputBox
+          label='E-mail'
+          value={ login }
+          style={ estilos.entrada }
+          keyboardType='email-address'
+          onChangeText={ onChangeLogin }
+        />
+        <InputBox
+          label='Senha'
+          value={ password }
+          style={ estilos.entrada }
+          keyboardType='visible-password'
+          onChangeText={ onChangePassword }
+        />
+        <Botao 
+          texto='Logar'
+          style={ estilos.botao }
+          onPress={ onChangePassword }
+        />
+      </View>
     </>
   )
 };
