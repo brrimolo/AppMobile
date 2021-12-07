@@ -5,11 +5,11 @@ import { Text } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Login from './Login';
-import Carrinho from './Carrinho';
+import Cardapio from './Cardapio';
+import Cesta from './Cesta';
 import CadastroUsuario from './CadastroUsuario';
-import GerenciarClientes2 from './GerenciarClientes2';
+import GerenciarClientes from './GerenciarClientes';
 import Pagamento from './Pagamento';
-
 
 
 const Drawer = createDrawerNavigator();
@@ -56,22 +56,32 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconClientes } />),
           }}
         />
+        <Drawer.Screen
+          name='Cardapio'
+          component={ Cardapio }
+          options={ {
+            drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Cardapio</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="fastfood" />),
+          } } 
+          
+        />
 
         <Drawer.Screen
-          name={ titulos.item4 }
-          component={ GerenciarClientes2 }
+          name='Cesta'
+          component={ Cesta }
           options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item4 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconClientes } />),
-          }}
+            drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Cesta</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="shopping-cart" />),
+          }} 
         />
+
         <Drawer.Screen
-          name={ titulos.item5 }
-          component={ Carrinho }
+          name='Gerenciar Clientes'
+          component={ GerenciarClientes }
           options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item5 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconCarrinho } />),
-          }}
+            drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Gerenciar Clientes</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name={ icones.iconClientes } />),
+          }} 
         />
 
       </Drawer.Navigator>
@@ -89,7 +99,7 @@ const titulos = {
   item2: "Cadastro de Usuário",
   item3: "Pagamento",
   item4: "Gerenciar Clientes",
-  item5: "Carrinho",
+  item5: "Cesta",
   item6: "Teste 3",
   item7: "Teste 4",
 }
