@@ -15,9 +15,15 @@ export default class CadastroUsuario extends React.Component {
     telefone: "",
     cpf: "",
     senha: "",
+    csenha: "",
   }
 
   gravarCliente = () => {
+
+    if(this.state.senha === this.state.csenha) {
+
+    
+
     const dados = {
       "nome": this.state.nome,
       "email": this.state.email,
@@ -39,12 +45,28 @@ export default class CadastroUsuario extends React.Component {
       .then(response => {
         if(response.status === 200){
           console.log('Cliente cadastrado com sucesso.')
-          this.componentDidMount()
+          this.funcLimparInputs()
         }else{
           console.log('Falha durante o cadastro.')
         }
       })
       .catch(erro => console.log(erro));
+
+    } else {
+      alert('Senha incorreta !')
+    }
+  }
+
+  funcLimparInputs = () => {
+    this.setState({
+      id: "",
+      nome: "",
+      email: "",
+      telefone: "",
+      cpf: "",
+      senha: "",
+      csenha: "",
+    })
   }
 
   nomeChange = (valor) => {
@@ -61,6 +83,9 @@ export default class CadastroUsuario extends React.Component {
   }
   senhaChange = (valor) => {
     this.setState({senha: valor})
+  }
+  csenhaChange = (valor) => {
+    this.setState({csenha: valor})
   }
 
   render() {
@@ -98,16 +123,7 @@ export default class CadastroUsuario extends React.Component {
               onChangeText={ valor => this.cpfChange( valor ) }
             />
 
-            <InputBox 
-              label='CEP'
-              style={ estilos.entrada }
-              value='CEP'
-            />
-            <InputBox
-              label='Endereço'
-              style={ estilos.entrada }
-              value='Endereço'
-            />
+
             
             <Texto style={ estilos.texto }>Definir Senha</Texto>
             <InputBox
@@ -119,6 +135,8 @@ export default class CadastroUsuario extends React.Component {
             <InputBox
               label='Confirme a senha'
               style={ estilos.entrada }
+              value={ this.state.csenha }
+              onChangeText={ valor => this.csenhaChange( valor ) }
             />
           </View>
         </ScrollView>
