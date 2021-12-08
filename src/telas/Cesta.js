@@ -1,14 +1,16 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Component } from 'react';
 import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Button, DataTable } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default class Cesta extends Component {
 
+export default class Cesta extends Component {
   state = {
     itensdocarrinho: [],
-    valortotalcarrinho: 0
+    valortotalcarrinho: 0,
+    redirecionar: false,
   }
 
   getCarrinho = () => {
@@ -33,6 +35,25 @@ export default class Cesta extends Component {
     fetch(urlvalortotal)
     .then(response => response.json())
     .then(data => this.setState({valortotalcarrinho: data}))
+  }
+
+  ConfirmarPedido= () =>{
+    this.setState({redirecionar: true})
+  }
+
+  LimparTela = () => {
+    const url = window.servidor + '/item/carrinho/limpar'
+      fetch(url)
+      .then(response => response.json())
+      .then((data) => {
+          this.setState({auxqtdecarrinho: data})
+          sessionStorage.setItem('qtdecarrinho',this.state.auxqtdecarrinho)
+          window.location.reload()
+      })
+  }
+
+  efetuarPagamento = () =>{
+    this.props.navigation.navigate('Pagamento')
   }
 
   render(){
@@ -65,8 +86,8 @@ export default class Cesta extends Component {
             <Text>Total: R$ {this.state.valortotalcarrinho}</Text>
           </View>
           <View style={estilos.viewBotoes}>
-            <View style={estilos.botoes}><Button mode='contained'>Limpar</Button></View>
-            <View style={estilos.botoes}><Button mode='contained'>Confirmar</Button></View>
+            <View style={estilos.botoes}><Button mode='contained' onPress={() =>this.LimparTela()}>Limpar</Button></View>
+            <View style={estilos.botoes}><Button mode='contained' onPress={() => this.efetuarPagamento()}>Confirmar</Button></View>
             
             
           </View>
