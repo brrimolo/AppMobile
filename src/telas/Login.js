@@ -8,7 +8,7 @@ import Botao from '../components/Botao';
 export default function Login({ navigation }) {
   
   const [login, setLogin] = useState('');
-  const [cliente, setCliente] = useState([]);
+  const [cliente, setCliente] = useState('');
   const [password, setPassword] = useState('');
 
   const onChangeLogin = login => setLogin(login);
@@ -16,27 +16,31 @@ export default function Login({ navigation }) {
 
   function efetuarLogin() {
     var clogin = {
-        "email":login,
-        "senha":password
+      "email":login,
+      "senha":password
     }
     var requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(clogin)
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clogin)
     }
     var url = window.servidor + '/cliente/login'
 
     console.log([url, requestOptions])
 
     fetch(url, requestOptions)
-        .then(response => setCliente(response.json()))
-        .then(data => setCliente(data))
-        .then(alert(['Usuário logado', cliente.email]))
-        
+      .then(response => response.json())
+      .then(response => {
+        console.log(response.email)
+        if(response.email===clogin.email && response.senha===clogin.senha){
+          alert('Usuario logado com sucesso !')
+        }else{
+          alert('Verifique o e-mail ou a senha !')
+        }
+      })
   }
-
 
   return (
     <>
