@@ -10,8 +10,9 @@ export default function Clientes( clientes ) {
       <>
       <ScrollView>
         <View style={ estilos.lista } key={ id }>
-          <Text style={ estilos.textoLista }>Nome: { clientes.nome }</Text>
-          <Text style={ estilos.textoLista }>CPF:  { clientes.cpf }</Text>
+          <Text style={ estilos.textoLista }>Nome:   { clientes.nome }</Text>
+          <Text style={ estilos.textoLista }>E-mail: { clientes.email }</Text>
+          <Text style={ estilos.textoLista }>Senha:  { clientes.senha }</Text>
         </View>
       </ScrollView>
       </>

@@ -8,12 +8,14 @@ import Botao from '../components/Botao';
 export default function Login({ navigation }) {
   
   const [login, setLogin] = useState('');
-  const onChangeLogin = login => setLogin(login);
+  const [cliente, setCliente] = useState([]);
   const [password, setPassword] = useState('');
+
+  const onChangeLogin = login => setLogin(login);
   const onChangePassword = password => setPassword(password);
 
   function efetuarLogin() {
-    var flogin = {
+    var clogin = {
         "email":login,
         "senha":password
     }
@@ -22,27 +24,18 @@ export default function Login({ navigation }) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(flogin)
+        body: JSON.stringify(clogin)
     }
+    var url = window.servidor + '/cliente/login'
 
-    var url = window.servidor + '/funcionario/login'
-    fetch(url,requestOption)
-        .then(response => response.json())
-        .then(data => this.setState({clienteLogin: data}) )
-        .then(() => {
-            let nomeUsuario = this.state.clienteLogin.nome;
-            if(login==='null'){
-                sessionStorage.setItem('NomeLogin','null')
-                sessionStorage.setItem('IdUsuarioLogado','null')
-            }else{
-                sessionStorage.setItem('NomeLogin',this.state.clienteLogin.nome)
-                sessionStorage.setItem('IdUsuarioLogado',this.state.clienteLogin.matricula)
-                toast.success('Benvindo '+ nomeUsuario)
-                window.location.reload()
-            }
-        })
+    console.log([url, requestOptions])
+
+    fetch(url, requestOptions)
+        .then(response => setCliente(response.json()))
+        .then(data => setCliente(data))
+        .then(alert(['Usuário logado', cliente.email]))
+        
   }
-  
 
 
   return (
@@ -65,7 +58,7 @@ export default function Login({ navigation }) {
         <Botao 
           texto='Logar'
           style={ estilos.botao }
-          onPress={ onChangePassword }
+          onPress={ efetuarLogin }
         />
         <View style={ estilos.container }>
           <Text style={ estilos.texto }>Caso não tenha cadastro clique aqui:</Text>
