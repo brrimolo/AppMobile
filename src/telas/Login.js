@@ -3,13 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import InputBox from '../components/InputBox';
 import Botao from '../components/Botao';
-import { blue100 } from 'react-native-paper/lib/typescript/styles/colors';
 
 
 export default function Login({ navigation }) {
   
   const [login, setLogin] = useState('');
-  const [cliente, setCliente] = useState('');
   const [password, setPassword] = useState('');
 
   const onChangeLogin = login => setLogin(login);
