@@ -19,7 +19,7 @@ export default function Menu() {
   return(
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={ titulos.item1 }
+        initialRouteName='Login'
         drawerStyle={{
           backgroundColor: "#313131",
           paddingVertical: 20,
@@ -29,28 +29,20 @@ export default function Menu() {
           inactiveTintColor: "#ffffff"
         }}>
         <Drawer.Screen 
-          name={ titulos.item1 }
+          name='Login'
           component={ Login }
           options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item1 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconLogin } />),
+            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>Login</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name='login' />),
           }} 
           />
         <Drawer.Screen
-          name={ titulos.item2 }
+          name='Cadastro de Usuário'
           component={ CadastroUsuario }
           options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item2 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconCadastro } />),
+            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>Cadastro de Usuário</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name='person' />),
           }} 
-        />
-        <Drawer.Screen
-          name={ titulos.item3 }
-          component={ Pagamento }
-          options={{
-            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>{ titulos.item3 }</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconClientes } />),
-          }}
         />
         <Drawer.Screen
           name='Cardapio'
@@ -70,11 +62,19 @@ export default function Menu() {
           }} 
         />
         <Drawer.Screen
+          name='Pagamento'
+          component={ Pagamento }
+          options={{
+            drawerLabel: (({focused}) => <Text style={{color: focused ? foco : cinza }}>Pagamento</Text>),
+            drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name='credit-card' />),
+          }}
+        />
+        <Drawer.Screen
           name='Gerenciar Clientes'
           component={ GerenciarClientes }
           options={{
             drawerLabel: (({focused}) => <Text style={{color: focused ? '#313131' : '#969696' }}>Gerenciar Clientes</Text>),
-            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name={ icones.iconClientes } />),
+            drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name='groups' />),
           }} 
         />
       </Drawer.Navigator>
@@ -87,20 +87,4 @@ const foco = "313131";
 const cinza = "#969696";
 const branco = "#ffffff";
 
-const titulos = {
-  item1: "Login",
-  item2: "Cadastro de Usuário",
-  item3: "Pagamento",
-  item4: "Gerenciar Clientes",
-  item5: "Cesta",
-  item6: "Teste 3",
-  item7: "Teste 4",
-}
 
-const icones = {
-  iconLogin: "login",
-  iconCarrinho: "shopping-cart",
-  iconClientes: "groups",
-  iconCadastro: "person",
-
-}

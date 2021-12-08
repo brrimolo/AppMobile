@@ -54,7 +54,10 @@ const estilos = StyleSheet.create({
     backgroundColor: 'purple',
   },
   texto: {
-    fontSize: 14,
-    marginLeft: 7,
+    marginLeft: 10,
+    color: '#8143bf',
+    fontSize: 21,
+    lineHeight: 42,
+    fontWeight: 'bold',
   },
 })

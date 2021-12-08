@@ -14,8 +14,8 @@ export default function Login({ navigation }) {
 
   function efetuarLogin() {
     var flogin = {
-        "email":this.state.email,
-        "senha":this.state.senha
+        "email":login,
+        "senha":password
     }
     var requestOptions = {
         method: 'POST',
@@ -25,40 +25,24 @@ export default function Login({ navigation }) {
         body: JSON.stringify(flogin)
     }
 
-    if(this.state.TipoLogin === "funcionario"){
-        var clogin = {
-            "login":this.state.email,
-            "senha":this.state.senha
-        }
-        var requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(clogin)
-        }
-        var url = window.servidor + '/funcionario/login'
-        fetch(url,requestOption)
-            .then(response => response.json())
-            .then(data => this.setState({clienteLogin: data}) )
-            .then(() => {
-                let nomeUsuario = this.state.clienteLogin.nome;
-                if(this.state.clienteLogin.nome==='null'){
-                    sessionStorage.setItem('NomeLogin','null')
-                    sessionStorage.setItem('IdUsuarioLogado','null')
-                }else{
-                    sessionStorage.setItem('NomeLogin',this.state.clienteLogin.nome)
-                    sessionStorage.setItem('IdUsuarioLogado',this.state.clienteLogin.matricula)
-                    toast.success('Benvindo '+ nomeUsuario)
-                    sessionStorage.setItem('TipoDeLogin','funcionario')
-                    this.setState({redirecionar: true})
-                    window.location.reload()
-
-                }
-                
-            })
-    }
+    var url = window.servidor + '/funcionario/login'
+    fetch(url,requestOption)
+        .then(response => response.json())
+        .then(data => this.setState({clienteLogin: data}) )
+        .then(() => {
+            let nomeUsuario = this.state.clienteLogin.nome;
+            if(login==='null'){
+                sessionStorage.setItem('NomeLogin','null')
+                sessionStorage.setItem('IdUsuarioLogado','null')
+            }else{
+                sessionStorage.setItem('NomeLogin',this.state.clienteLogin.nome)
+                sessionStorage.setItem('IdUsuarioLogado',this.state.clienteLogin.matricula)
+                toast.success('Benvindo '+ nomeUsuario)
+                window.location.reload()
+            }
+        })
   }
+  
 
 
   return (
@@ -83,12 +67,14 @@ export default function Login({ navigation }) {
           style={ estilos.botao }
           onPress={ onChangePassword }
         />
-        <Text>Caso não tenha cadastro clique aqui:</Text>
-        <Botao 
-          texto='Cadastrar'
-          style={ estilos.botao }
-          onPress={ () => navigation.navigate('Cadastro de Usuário') }
-        />
+        <View style={ estilos.container }>
+          <Text style={ estilos.texto }>Caso não tenha cadastro clique aqui:</Text>
+          <Botao 
+            texto='Cadastrar'
+            style={ estilos.botao }
+            onPress={ () => navigation.navigate('Cadastro de Usuário') }
+          />
+        </View>
       </View>
     </>
   )
@@ -107,6 +93,13 @@ const estilos = StyleSheet.create({
   entrada: {
     marginTop: 10,
     marginBottom: 10,
+  },
+  texto: {
+    marginTop: 15,
+    fontSize: 18,
+    lineHeight: 32,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   
 });

@@ -86,10 +86,8 @@ export default class Cesta extends Component {
             <Text>Total: R$ {this.state.valortotalcarrinho}</Text>
           </View>
           <View style={estilos.viewBotoes}>
-            <View style={estilos.botoes}><Button mode='contained' onPress={() =>this.LimparTela()}>Limpar</Button></View>
+            <View style={estilos.botoes}><Button mode='contained' onPress={() => this.LimparTela()}>Limpar</Button></View>
             <View style={estilos.botoes}><Button mode='contained' onPress={() => this.efetuarPagamento()}>Confirmar</Button></View>
-            
-            
           </View>
         </SafeAreaView>
       </>

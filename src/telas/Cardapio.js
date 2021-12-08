@@ -60,7 +60,7 @@ export default class  Cardapio extends Component {
                 <SafeAreaView>
                 {this.state.itens && this.state.itens.map((item) => {
                     return (
-                        <View style={ estilos.container }>
+                        <View style={ estilos.container } key={ item.id }>
                             
                             <List.Item
                                 title={item.nome}
