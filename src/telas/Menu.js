@@ -18,7 +18,6 @@ export default function Menu() {
 
   return(
     <NavigationContainer>
-      
       <Drawer.Navigator
         initialRouteName={ titulos.item1 }
         drawerStyle={{
@@ -29,7 +28,6 @@ export default function Menu() {
           activeBackgroundColor: "#ffffff",
           inactiveTintColor: "#ffffff"
         }}>
-
         <Drawer.Screen 
           name={ titulos.item1 }
           component={ Login }
@@ -38,7 +36,6 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconLogin } />),
           }} 
           />
-
         <Drawer.Screen
           name={ titulos.item2 }
           component={ CadastroUsuario }
@@ -47,7 +44,6 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? foco : branco } name={ icones.iconCadastro } />),
           }} 
         />
-
         <Drawer.Screen
           name={ titulos.item3 }
           component={ Pagamento }
@@ -65,7 +61,6 @@ export default function Menu() {
           } } 
           
         />
-
         <Drawer.Screen
           name='Cesta'
           component={ Cesta }
@@ -74,7 +69,6 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name="shopping-cart" />),
           }} 
         />
-
         <Drawer.Screen
           name='Gerenciar Clientes'
           component={ GerenciarClientes }
@@ -83,7 +77,6 @@ export default function Menu() {
             drawerIcon: (({focused}) => <Icon color={focused ? '#313131' : '#fff' } name={ icones.iconClientes } />),
           }} 
         />
-
       </Drawer.Navigator>
     </NavigationContainer>
     

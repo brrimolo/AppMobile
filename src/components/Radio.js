@@ -10,6 +10,7 @@ export default function Radio( {sel, options=[], vertical=false, onChangeSelect}
         options.map( (opt, index) => (
           
           <TouchableOpacity
+            key={ index }
             onPress={ ()=> setSelected(index)} 
             style={ estilos.optContainer }>
               <View style={ estilos.outlineCircle }>
