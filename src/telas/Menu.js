@@ -86,5 +86,3 @@ export default function Menu() {
 const foco = "313131";
 const cinza = "#969696";
 const branco = "#ffffff";
-
-

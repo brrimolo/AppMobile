@@ -19,42 +19,36 @@ export default class CadastroUsuario extends React.Component {
   }
 
   gravarCliente = () => {
-
     if(this.state.senha === this.state.csenha) {
+      const dados = {
+        "nome": this.state.nome,
+        "email": this.state.email,
+        "telefone": this.state.telefone,
+        "cpf": this.state.cpf,
+        "senha": this.state.senha
+      }
 
-    
-
-    const dados = {
-      "nome": this.state.nome,
-      "email": this.state.email,
-      "telefone": this.state.telefone,
-      "cpf": this.state.cpf,
-      "senha": this.state.senha
-    }
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(dados)
-    };
-
-    const url = window.servidor + '/cliente/incluir/'
-      fetch(url, requestOptions)
-      .then(response => {
-        if(response.status === 200){
-          console.log('Cliente cadastrado com sucesso.')
-          this.funcLimparInputs()
-        }else{
-          console.log('Falha durante o cadastro.')
-        }
-      })
-      .catch(erro => console.log(erro));
-
-    } else {
-      alert('Senha incorreta !')
-    }
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+      };
+      const url = window.servidor + '/cliente/incluir/'
+        fetch(url, requestOptions)
+        .then(response => {
+          if(response.status === 200){
+            console.log('Cliente cadastrado com sucesso.')
+            this.funcLimparInputs()
+          }else{
+            console.log('Falha durante o cadastro.')
+          }
+        })
+        .catch(erro => console.log(erro));
+      } else {
+        alert('Senha incorreta !')
+      }
   }
 
   funcLimparInputs = () => {

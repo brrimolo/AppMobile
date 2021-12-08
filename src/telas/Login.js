@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import InputBox from '../components/InputBox';
 import Botao from '../components/Botao';
+import { blue100 } from 'react-native-paper/lib/typescript/styles/colors';
 
 
 export default function Login({ navigation }) {
@@ -95,7 +96,6 @@ const estilos = StyleSheet.create({
     marginTop: 15,
     fontSize: 18,
     lineHeight: 32,
-    fontWeight: 'bold',
     textAlign: 'center',
   },
   
